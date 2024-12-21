@@ -1,6 +1,6 @@
-# Automating Daily reminders with AWS Lambda and Cloudwatch 
+# Automating Daily reminders with AWS Lambda and Amazon EventBridge
 
-Automating reminders can save time and ensure that important tasks are never missed. In today’s fast-paced world, staying on top of reminders and notifications is crucial. In this article, I will walk you through how I automated a simple meeting reminder to my email using AWS Lambda and CloudWatch.
+Automating reminders can save time and ensure that important tasks are never missed. In today’s fast-paced world, staying on top of reminders and notifications is crucial. In this article, I will walk you through how I automated a simple meeting reminder to my email using AWS Lambda, Amazon SNS and EventBridge.
 
 # Step 1 : Setting up Amazon SNS (Simple Notification Service)
 Before we can send reminders, we need a service that can deliver the message. AWS SNS is a flexible, fully managed messaging service that allows you to send notifications to multiple recipients via SMS, email and even other AWS services.
@@ -44,17 +44,41 @@ AWS Lambda allows us to run code without provisioning or managing servers. For t
 - Go to the **IAM role** associated with your **Lambda function.**
 - Select the role that AWS creates automatically for the Lambda function
   
-![1cf8e020-588b-47fa-8d67-18f54e615bf4](https://github.com/user-attachments/assets/0456b0ca-db5e-4444-955a-c07774c18325)
+  ![1cf8e020-588b-47fa-8d67-18f54e615bf4](https://github.com/user-attachments/assets/0456b0ca-db5e-4444-955a-c07774c18325)
 
 - Click on **Add permissions ** and select Attach policies.
 - Search for and attach the **AmazonSNSFullAccess policy** to the role
 
-![bb84ca08-a668-4760-80e7-0f03398f118c](https://github.com/user-attachments/assets/61a5d0ca-d63f-4d0b-b787-f8f830225918)
+ ![bb84ca08-a668-4760-80e7-0f03398f118c](https://github.com/user-attachments/assets/61a5d0ca-d63f-4d0b-b787-f8f830225918)
 
 - Create new test event, deploy the function and test it.
 
-![86c1da8b-3c66-4b2a-82e4-1fd5e02ab2f9](https://github.com/user-attachments/assets/c3808ac8-6665-4a76-9a74-e5c112dca16a)
+ ![86c1da8b-3c66-4b2a-82e4-1fd5e02ab2f9](https://github.com/user-attachments/assets/c3808ac8-6665-4a76-9a74-e5c112dca16a)
 
+# Step 3: Setting up Amazon EventBridge
+- Search for **Amazon EventBridge** in the AWS Management Console.
+- In the EventBridge dashboard, search for **Schedules**.
+- Click Create schedule and enter a **schedule name** eg: 'Meeting Reminder' .
+- Choose whether you want the reminder to be **recurring** or a **one-time reminder**.
+- Select the **date** you want to receive the reminder.
+- Set the **time for the reminder**, ensuring to account for the timezone.
+- Choose a **flexible time window**
+
+  ![ae7c83a9-803a-444b-9c59-f3a32f98c57f](https://github.com/user-attachments/assets/3f7c6898-5914-4a77-8273-63100900cd9b)
+
+- Select target API, and select AWS Lambda.
+- On the lambda function, select the lambda function you craeted.
+  
+  ![70db95d5-4f49-4811-8607-b974dbb232e4](https://github.com/user-attachments/assets/519f66e2-5a29-4234-8cc1-602748ace4e3)
+
+-  Click on next,and ** Create Schedule **
+
+# Step 4 : Verify if You Will Receive an Automated Email Notification
+- At the scheduled time, open your email inbox.
+- Check for the email notification that was sent to remind you about the meeting.
+- Below is a screenshot showing that I set a reminder for 5:40 PM to notify me about an upcoming meeting.
+
+   ![16461bf0-4fa7-4bf6-b2a0-ffee9be37b0d](https://github.com/user-attachments/assets/7c41dbb7-83a3-4dd6-8356-53c196a1cfb3)
 
 
 
