@@ -46,7 +46,7 @@ AWS Lambda allows us to run code without provisioning or managing servers. For t
   
   ![1cf8e020-588b-47fa-8d67-18f54e615bf4](https://github.com/user-attachments/assets/0456b0ca-db5e-4444-955a-c07774c18325)
 
-- Click on **Add permissions ** and select Attach policies.
+- Click on **Add permissions** and select Attach policies.
 - Search for and attach the **AmazonSNSFullAccess policy** to the role
 
  ![bb84ca08-a668-4760-80e7-0f03398f118c](https://github.com/user-attachments/assets/61a5d0ca-d63f-4d0b-b787-f8f830225918)
@@ -56,6 +56,9 @@ AWS Lambda allows us to run code without provisioning or managing servers. For t
  ![86c1da8b-3c66-4b2a-82e4-1fd5e02ab2f9](https://github.com/user-attachments/assets/c3808ac8-6665-4a76-9a74-e5c112dca16a)
 
 # Step 3: Setting up Amazon EventBridge
+
+EventBridge helps you connect different applications by sending events between them. We shall use eventbridge to trigger an AWS Lambda Function to send notifications through amazon SNS. 
+
 - Search for **Amazon EventBridge** in the AWS Management Console.
 - In the EventBridge dashboard, search for **Schedules**.
 - Click Create schedule and enter a **schedule name** eg: 'Meeting Reminder' .
@@ -71,7 +74,7 @@ AWS Lambda allows us to run code without provisioning or managing servers. For t
   
   ![70db95d5-4f49-4811-8607-b974dbb232e4](https://github.com/user-attachments/assets/519f66e2-5a29-4234-8cc1-602748ace4e3)
 
--  Click on next,and ** Create Schedule **
+-  Click on next,and **Create Schedule**
 
 # Step 4 : Verify if You Will Receive an Automated Email Notification
 - At the scheduled time, open your email inbox.
