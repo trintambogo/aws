@@ -53,7 +53,8 @@ AWS Lambda allows us to run code without provisioning or managing servers. For t
 
 - Create new test event, deploy the function and test it.
 
- ![86c1da8b-3c66-4b2a-82e4-1fd5e02ab2f9](https://github.com/user-attachments/assets/c3808ac8-6665-4a76-9a74-e5c112dca16a)
+ ![838f2981-c8f8-4ebe-bf6a-88d1adf275c0](https://github.com/user-attachments/assets/fbb4aee4-fdf4-4e48-a340-5e9cb94344dd)
+
 
 # Step 3: Setting up Amazon EventBridge
 
